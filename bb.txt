@@ -1,0 +1,23 @@
+Hooray --  My β22 is finished!
+
+I have a balanced source and wanted to get the entire balanced signal all the way to the headphone drivers. So this is a balanced build; 4x β22, attenuated by 2x δ1, powered by 2x σ22. A custom controller listens to ir commands and controls an SSR that connects main to the σ22. The controller also sets the attenuation, moves the motorpot, monitors the motorpot for manual adjust, drives a red led ring around the volume knob. It also provides an isolated serial over usb connection for outside control.
+
+I can only describe the sound experience as "precise". I hear performers and audience breathe.
+
+Pictures included here are both from the halfway planning stage on wood, and in the final case. The cases have been milled by modushop.biz, very pleasant people to work with. I sent them qcad prepared dxf drawings of the front plates, and they carried out my instructions to the letter. Highly recommended!
+
+ 
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2721.JPG]PSU[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2724.JPG]AMP[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2729.JPG]#12s balanced[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2733.JPG]single #22[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2735.JPG]Schuro transformer connection[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2740.JPG]volume controller + 2 LM317 5V supplies[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2745.JPG]Set[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4030.JPG]Case logo[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4058.JPG]Cased layout[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4059.JPG]PSU layout[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4083.JPG]AMP layout[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4059.JPG]Volume controller[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4065.JPG]Cover[/Thumb]
+[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4080.JPG]Front of set[/Thumb]
