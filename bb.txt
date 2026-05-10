@@ -1,23 +1,26 @@
 Hooray --  My β22 is finished!
 
-I have a balanced source and wanted to get the entire balanced signal all the way to the headphone drivers. So this is a balanced build; 4x β22, attenuated by 2x δ1, powered by 2x σ22. A custom controller listens to ir commands and controls an SSR that connects main to the σ22. The controller also sets the attenuation, moves the motorpot, monitors the motorpot for manual adjust, drives a red led ring around the volume knob. It also provides an isolated serial over usb connection for outside control.
+I have a balanced source and wanted to get the entire balanced signal all the way to the headphone drivers. So this is a balanced build; 4x β22, attenuated by 2x δ1, powered by 2x σ22. A custom controller listens to ir commands and controls an SSR that connects mains to the σ22. The controller also sets the attenuation, moves the motorpot, monitors the motorpot for manual adjust, drives a red led ring around the volume knob. It also provides an isolated serial over usb connection for outside control.
 
-I can only describe the sound experience as "precise". I hear performers and audience breathe.
+I can only describe the sound experience as "precise". I hear performers and audience breathe, and it is great fun to trawl through my collection and hear what more there is to hear in old favorites.. 
 
-Pictures included here are both from the halfway planning stage on wood, and in the final case. The cases have been milled by modushop.biz, very pleasant people to work with. I sent them qcad prepared dxf drawings of the front plates, and they carried out my instructions to the letter. Highly recommended!
+All casework was drafted in qcad; baseplate layout is a snap and it is easy to change things around while you are thinking about it. The good people at modushop.biz milled my front and back designs in their slimline cases. Front plate is 10mm anodized aluminium, back is 3mm anodized aluminium. Bottom and cover are steel (<1mm), sides are aluminium. Modushop have a slotted sideplate design that holds m3 screws captive for cover fastings. 
 
- 
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2721.JPG]PSU[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2724.JPG]AMP[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2729.JPG]#12s balanced[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2733.JPG]single #22[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2735.JPG]Schuro transformer connection[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2740.JPG]volume controller + 2 LM317 5V supplies[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_2745.JPG]Set[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4030.JPG]Case logo[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4058.JPG]Cased layout[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4059.JPG]PSU layout[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4083.JPG]AMP layout[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4059.JPG]Volume controller[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4065.JPG]Cover[/Thumb]
-[Thumb=http://wpd.home.xs4all.nl/ambforum/beta22/IMG_4080.JPG]Front of set[/Thumb]
+Many thanks Ti!
+Many thanks also to you other forum members. I got many ideas from reading your posts... (linuxworks -- motorpot, adamct -- pointing me at to this volume knob, steinchen/amb for the lighted volume knob idea, etc)
+
+Now on to catch up on 2 years of neglected music listening! :)
+[thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4030.JPG]Case logo[/thumb][thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4058.JPG]Cased layout[/thumb][thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4059.JPG]PSU layout[/thumb][thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4083.JPG]AMP layout[/thumb][thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4065.JPG]Volume controller[/thumb][thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_4080.JPG]Front of set[/thumb]
+
+-----
+
+Hardware: the custom controller is an atmega16 with isp and jtag ports exposed via tagconnect headers, an l293dd for motor control, an adum1201 + uart ttl 2 usb cp210x for serial isolation, and a tsop382 ir receiver. A pwm output is used to pulse 4 red leds that are mounted behind a 2mm opaque acrylic circle that is fixed behind the volume knob. The ir receiver is placed on the inside of the top of the circle, and uses the red circle as a receiving light pipe. The controller has a dedicated LM317 based regulator.
+
+Software: the controller is always on and decodes rc-5 and sheng ya [*] remote codes. At powerup, the i2c bus is scanned for δ1s and the volume and motorpot are first turned down (I have small kids). If any of this fails the controller will revert to poweroff state and refuse to go further. If poweron sequence is complete the SSR is turned on, giving power to the σ22s and a second LM317 regulator that is used as the relay switching supply. After that volume commands via remote or manual on the knob are transmitted to the δ1s. Any action requiring time (i.e. motorpot movement) will be communicated over serial and visually by a gentle throbbing red light behind the volume knob. 
+
+[*] I have a Sheng Ya amplifier that I use to drive my speakers. This has a nice hefty remote with an endearing weird own protocol. This arrangement lets me use that same remote while listening to either speakers or headphones.
+
+Code size is about 6k with -Os. The code is fairly modular; the ir receiver, can be extended easily with new ir families or codes, but has no programmed in learning mode. It is configured to support 2 δ1s, but can be configured to look for more. I plan to release all as open source when I find some time to make a coherent website.
+
+I had a hard time finding a good picture of the underside. Here my previously taken best effort that obscures the atmega and adum..: 
+[thumb=https://dijkstrw.github.io/ambforum_beta22/IMG_20131213_205158.jpg]Controller[/thumb]
